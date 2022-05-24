@@ -24,24 +24,38 @@ add_subdirectory(src)
 add_subdirectory(test)
 " > CMakeLists.txt
 
-echo "prun (){
+prun="prun (){
     ./bin/${projectname}_run
 }
-export -f prun" >> ~/.bashrc
+export -f prun" 
 
-echo "ptest (){
+ptest="ptest (){
     ./bin/${projectname}_test
 }
-export -f ptest" >> ~/.bashrc
+export -f ptest"
 
-echo "alias prun=./bin/${projectname}_run" >> ~/.bashrc
-
-echo "alias ptest=./bin/${projectname}_test" >> ~/.bashrc
-
+#check what type of shell you are using and add the functions to the shell profile
+if [ -f ~/.bash_profile ]; then
+    if ! grep -q "prun" ~/.bash_profile; then
+        echo $prun >> ~/.bash_profile
+        echo $ptest >> ~/.bash_profile
+    fi
+fi
+if [ -f ~/.bashrc ]; then
+    if ! grep -q "prun" ~/.bashrc; then
+        echo $prun >> ~/.bashrc
+        echo $ptest >> ~/.bashrc
+    fi
+fi
+if [ -f ~/.zshrc ]; then
+    if ! grep -q "prun" ~/.zshrc; then
+        echo $prun >> ~/.zshrc
+        echo $ptest >> ~/.zshrc
+    fi
+fi
 
 chmod +x ./scripts/bash/mf.sh
 ./scripts/bash/mf.sh ${projectname}
-
 
 #run build
 cmake .

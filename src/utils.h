@@ -23,7 +23,7 @@ private:
 public:
   CSV(std::string filename) {
     this->filename = filename;
-    this->file.open(filename);
+    this->file.open(filename, std::ofstream::out | std::ofstream::in);
   }
 
   ~CSV() { this->file.close(); }
