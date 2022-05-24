@@ -15,6 +15,7 @@ Target:
 
     chmod +x ./scripts/bash/env-setup.sh 
     ./scripts/bash/env-setup.sh "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS"
+    ptest
 ```
 ### Usage
 Build: 
