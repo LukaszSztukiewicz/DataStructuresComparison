@@ -10,27 +10,27 @@ Target:
 
 ### Setup: 
 #### Linux
-
-    $ chmod +x ./scripts/bash/cpp-env-setup.sh 
-    $ ./scripts/bash/cpp-env-setup.sh "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS"
-
+```
+    chmod +x ./scripts/bash/env-setup.sh 
+    ./scripts/bash/env-setup.sh "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS"
+```
 ### Usage
 Build: 
-
-    $ make
-
+```
+    make
+```
 Run: 
-
-    $ prun
-
+```
+    prun
+```
 Test: 
-
-    $ ptest
-
+```
+    ptest
+```
 Debug:
-
-    $ cmake . -DCMAKE_BUILD_TYPE=Debug
-
+```
+    cmake . -DCMAKE_BUILD_TYPE=Debug
+```
 ### Dependencies:
  - [x] google test
  - [x] cmake
