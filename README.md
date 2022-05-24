@@ -2,7 +2,7 @@
 
 Environment for performing experminents in C++ and data analisys in Python with extensive support for Jupyter Notebooks.
 
-Target: Linux / WSL2
+Target Operating Systems: Linux / WSL2
 
 Style Guide
 [Google Style Guide](https://google.github.io/styleguide/cppguide.html)
@@ -23,3 +23,9 @@ Build: make
 Run: prun
 
 Test: ptest
+
+Dependencies:
++google test
++cmake
+-btaf
+-graphviz, anim
