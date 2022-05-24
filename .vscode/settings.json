@@ -1,0 +1,16 @@
+{
+    "todo-tree.highlights.customHighlight": {
+        "LOG": {
+            "type": "text",
+            "icon": "eye",
+            "foreground": "#FFFFFF",
+            "iconColour": "#888888",
+            "background": "#ff990065"
+        }
+    },
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "LOG",
+    ],
+}

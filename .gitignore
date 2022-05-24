@@ -1,0 +1,24 @@
+lib/*
+
+#cmake tool vscode extension
+**/build/*
+
+#cmake
+*.a
+*.txt
+*.cmake
+Makefile
+!CMakeLists.txt
+**/CMakeFiles/*
+
+#graphs
+*.dot
+
+#images
+*.png
+
+#temp
+*.tmp
+
+!.gitkeep
+!.vscode/*
