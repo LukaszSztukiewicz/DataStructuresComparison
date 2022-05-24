@@ -11,7 +11,8 @@ Target:
 ### Setup: 
 #### Linux
 
-    $ chmod +x ./scripts/bash/cpp-env-setup.sh && $_
+    $ chmod +x ./scripts/bash/cpp-env-setup.sh 
+    $ ./scripts/bash/cpp-env-setup.sh "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS"
 
 ### Usage
 Build: 

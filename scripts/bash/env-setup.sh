@@ -1,5 +1,12 @@
 #!/bin/bash
-projectname="$1"
+
+if [ "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS" = "$1" ]; then
+  projectname="default"
+elif [ -z "$1" ]; then
+  projectname="default"
+else
+  projectname="$1"
+fi
 
 #add dependencies
 cd lib && git clone https://github.com/google/googletest.git
@@ -37,20 +44,20 @@ export -f ptest"
 #check what type of shell you are using and add the functions to the shell profile
 if [ -f ~/.bash_profile ]; then
     if ! grep -q "prun" ~/.bash_profile; then
-        echo $prun >> ~/.bash_profile
-        echo $ptest >> ~/.bash_profile
+        echo ${prun} >> ~/.bash_profile
+        echo ${ptest} >> ~/.bash_profile
     fi
 fi
 if [ -f ~/.bashrc ]; then
     if ! grep -q "prun" ~/.bashrc; then
-        echo $prun >> ~/.bashrc
-        echo $ptest >> ~/.bashrc
+        echo ${prun} >> ~/.bashrc
+        echo ${ptest} >> ~/.bashrc
     fi
 fi
 if [ -f ~/.zshrc ]; then
     if ! grep -q "prun" ~/.zshrc; then
-        echo $prun >> ~/.zshrc
-        echo $ptest >> ~/.zshrc
+        echo ${prun} >> ~/.zshrc
+        echo ${ptest} >> ~/.zshrc
     fi
 fi
 
