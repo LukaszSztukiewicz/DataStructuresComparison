@@ -33,31 +33,32 @@ add_subdirectory(test)
 
 prun="prun (){
     ./bin/${projectname}_run
-}
-export -f prun" 
+}" 
 
 ptest="ptest (){
     ./bin/${projectname}_test
-}
-export -f ptest"
+}"
 
 #check what type of shell you are using and add the functions to the shell profile
-if [ -f ~/.bash_profile ]; then
-    if ! grep -q "prun" ~/.bash_profile; then
-        echo ${prun} >> ~/.bash_profile
-        echo ${ptest} >> ~/.bash_profile
-    fi
-fi
-if [ -f ~/.bashrc ]; then
-    if ! grep -q "prun" ~/.bashrc; then
-        echo ${prun} >> ~/.bashrc
-        echo ${ptest} >> ~/.bashrc
-    fi
-fi
 if [ -f ~/.zshrc ]; then
     if ! grep -q "prun" ~/.zshrc; then
         echo ${prun} >> ~/.zshrc
         echo ${ptest} >> ~/.zshrc
+        source ~/.zshrc
+    fi
+
+elif [ -f ~/.bashrc ]; then
+    if ! grep -q "prun" ~/.bashrc; then
+        echo ${prun} >> ~/.bashrc
+        echo ${ptest} >> ~/.bashrc
+        source ~/.bashrc
+    fi
+
+elif [ -f ~/.bash_profile ]; then
+    if ! grep -q "prun" ~/.bash_profile; then
+        echo ${prun} >> ~/.bash_profile
+        echo ${ptest} >> ~/.bash_profile
+        source ~/.bash_profile
     fi
 fi
 

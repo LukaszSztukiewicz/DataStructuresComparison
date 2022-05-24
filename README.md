@@ -4,13 +4,15 @@ Environment for performing experminents in C++ and data analisys in Python with 
 [Google Style Guide](https://google.github.io/styleguide/cppguide.html)
 
 Target: 
-
  - [x] Linux
  - [x] WSL2
 
 ### Setup: 
 #### Linux
 ```
+    git clone https://github.com/LukaszSztukiewicz/CuPyterLab.git
+    cd CuPyterLab
+
     chmod +x ./scripts/bash/env-setup.sh 
     ./scripts/bash/env-setup.sh "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS"
 ```
