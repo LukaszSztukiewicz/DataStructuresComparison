@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS" = "$1" ]; then
-  projectname="default"
+  projectname="defaultproject"
 elif [ -z "$1" ]; then
-  projectname="default"
+  projectname="defaultproject"
 else
   projectname="$1"
 fi
