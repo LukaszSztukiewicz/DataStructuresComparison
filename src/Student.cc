@@ -54,9 +54,20 @@ void StudnetsGenerator::saveToCSV(std::string fileName) {
 }
 
 void StudnetsGenerator::loadFromCSV(std::string fileName) {
-  CSV csv(fileName);
+  CSV csv("test.csv");
   std::vector<std::vector<std::string>> lines = csv.readAll();
   for (auto line : lines) {
     students.push_back(new Student(std::stoi(line[0]), line[1], line[2]));
+  }
+}
+
+void StudnetsGenerator::print(bool indicesOnly, int limit) {
+  for (int i = 0; i < students.size(); i++) {
+    if (indicesOnly)
+      std::cout << students[i]->getIndex() << '\n';
+    else
+      students[i]->print();
+    if (limit != -1 && i == limit)
+      break;
   }
 }

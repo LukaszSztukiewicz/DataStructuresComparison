@@ -14,7 +14,7 @@ TEST(CSV, write_readAll) {
   EXPECT_EQ(result[0], header);
   EXPECT_EQ(result[1], v);
   EXPECT_EQ(result[2], v2);
-  remove("test/test_write_readAll.csv");
+  // remove("test/test_write_readAll.csv");
 }
 
 // test CSV readColumn without skipping header
@@ -49,13 +49,15 @@ TEST(CSV, read_row) {
   remove("test/test_read_row.csv");
 }
 
-// test CSV writeRaw
-TEST(CSV, write_raw) {
-  CSV csv("test/test_write_raw.csv");
-  csv.writeRaw("1");
-  csv.writeRaw("2");
-  csv.writeRaw("3");
+// test CSV writeLine
+TEST(CSV, write_line) {
+  CSV csv("test/test_write_line.csv");
+  csv.writeLine("1");
+  csv.writeLine("2");
+  csv.writeLine("3");
   std::vector<std::vector<std::string>> result = csv.readAll();
-  EXPECT_EQ(result[0][0], "123");
-  remove("test/test_write_raw.csv");
+  EXPECT_EQ(result[0][0], "1");
+  EXPECT_EQ(result[1][0], "2");
+  EXPECT_EQ(result[2][0], "3");
+  remove("test/test_write_line.csv");
 }

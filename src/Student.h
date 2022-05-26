@@ -33,7 +33,7 @@ public:
   void generate(int n, int indexSize, int stringLen, bool newlist = false);
   void saveToCSV(std::string fileName);
   void loadFromCSV(std::string fileName);
-  void print(bool indicesOnly);
+  void print(bool indicesOnly, int limit = -1);
 };
 
 #endif // STUDENTCLASS_H
