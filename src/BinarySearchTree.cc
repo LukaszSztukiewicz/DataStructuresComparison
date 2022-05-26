@@ -35,6 +35,7 @@ void BinarySearchTree::remove(InsertData *data, bool compareIndexOnly) {
             previous->right = current->left;
           }
         }
+
         delete current;
         return;
       }
@@ -66,10 +67,10 @@ InsertData *BinarySearchTree::search(InsertData *data, bool compareIndexOnly) {
 }
 
 void BinarySearchTree::insert(InsertData *data, bool withDuplicates) {
-  BinarySearchTreeNode *newItem;
-  newItem->data  = data;
-  newItem->left  = nullptr;
-  newItem->right = nullptr;
+  BinarySearchTreeNode *newItem = new BinarySearchTreeNode(data);
+  newItem->data                 = data;
+  newItem->left                 = nullptr;
+  newItem->right                = nullptr;
   if (root == nullptr) {
     root = newItem;
   } else {
@@ -78,6 +79,7 @@ void BinarySearchTree::insert(InsertData *data, bool withDuplicates) {
       if (current->data->getIndex() > data->getIndex()) {
         if (current->left == nullptr) {
           current->left = newItem;
+
           return;
         } else {
           current = current->left;
