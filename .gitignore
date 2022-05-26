@@ -1,4 +1,5 @@
 lib/*
+bin/*
 
 #cmake tool vscode extension
 **/build/*
@@ -19,6 +20,7 @@ Makefile
 
 #temp
 *.tmp
+*.csv
 
 !.gitkeep
 !.vscode/*

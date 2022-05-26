@@ -19,6 +19,7 @@ double measureTimeOfFunction(std::function<T *(int *, int)> f, int arr[], int n)
 
 } // namespace utils
 
-int main(int argc, char **argv) {
-  return 0;
+CSV::CSV(std::string filename) {
+  this->filename = filename;
+  this->file.open(filename, std::ofstream::out | std::ofstream::in | std::ofstream::trunc);
 }
