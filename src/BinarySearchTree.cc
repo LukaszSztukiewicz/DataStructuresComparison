@@ -130,3 +130,26 @@ void BinarySearchTree::recursivePrint(BinarySearchTreeNode *node, bool *indicesO
     }
   }
 }
+
+void BinarySearchTree::recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder *traversalOrder) {
+  if (node == nullptr) {
+    return;
+  }
+  switch (*traversalOrder) {
+  case BinarySearchTree::traversalOrder::PRE_ORDER:
+    function(node->data);
+    recursiveTraverseAndCallFunction(node->left, indicesOnly, traversalOrder, function);
+    recursiveTraverseAndCallFunction(node->right, indicesOnly, traversalOrder, function);
+    break;
+  case BinarySearchTree::traversalOrder::IN_ORDER:
+    recursiveTraverseAndCallFunction(node->left, indicesOnly, traversalOrder, function);
+    function(node->data);
+    recursiveTraverseAndCallFunction(node->right, indicesOnly, traversalOrder, function);
+    break;
+  case BinarySearchTree::traversalOrder::POST_ORDER:
+    recursiveTraverseAndCallFunction(node->left, indicesOnly, traversalOrder, function);
+    recursiveTraverseAndCallFunction(node->right, indicesOnly, traversalOrder, function);
+    function(node->data);
+    break;
+  }
+}

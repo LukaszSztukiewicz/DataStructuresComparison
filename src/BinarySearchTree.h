@@ -29,7 +29,7 @@ public:
   void remove(InsertData *data, bool compareIndexOnly);
   InsertData *search(InsertData *data, bool compareIndexOnly);
   void recursivePrint(BinarySearchTreeNode *root, bool *indicesOnly, BinarySearchTree::traversalOrder *traversalOrder);
-  void traverseAndCallFunction(std::function<void *(InsertData *)>, BinarySearchTree::traversalOrder *traversalOrder);
+  void recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder *traversalOrder);
 };
 
 #endif // BINARYSEARCHTREE_H
