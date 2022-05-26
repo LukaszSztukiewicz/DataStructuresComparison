@@ -25,10 +25,9 @@ public:
 };
 
 class StudnetsGenerator {
-private:
-  std::vector<Student *> students;
 
 public:
+  std::vector<Student *> students;
   StudnetsGenerator();
   ~StudnetsGenerator();
   void generate(int n, int indexSize, int stringLen, bool newlist = false);

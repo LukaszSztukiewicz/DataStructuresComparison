@@ -28,6 +28,9 @@ bool Student::operator==(const Student &other) const {
   return index == other.index && firstName == other.firstName && lastName == other.lastName;
 }
 
+StudnetsGenerator::StudnetsGenerator() {
+}
+
 StudnetsGenerator::~StudnetsGenerator() {
   for (auto student : students)
     delete student;
