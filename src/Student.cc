@@ -49,15 +49,14 @@ void StudnetsGenerator::generate(int n, int indexSize, int stringLen, bool newli
 
 void StudnetsGenerator::saveToCSV(std::string fileName) {
   CSV csv(fileName);
-  csv.clear();
   for (int i = 0; i < students.size() - 1; i++) {
-    csv.writeLine(students[i]->toCSV(), "\n", true);
+    csv.writeLine(students[i]->toCSV());
   }
-  csv.writeLine(students[students.size() - 1]->toCSV(), "", true);
+  csv.writeLine(students[students.size() - 1]->toCSV());
 }
 
 void StudnetsGenerator::loadFromCSV(std::string fileName) {
-  CSV csv(fileName);
+  CSV csv(fileName, false);
   std::vector<std::vector<std::string>> lines = {};
 
   lines = csv.readAll();

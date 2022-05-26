@@ -24,6 +24,7 @@ TEST(CSV, read_column) {
   std::vector<std::string> header = {"a", "b", "c"};
   std::vector<std::string> v      = {"1", "2", "3"};
   std::vector<std::string> v2     = {"4", "5", "6"};
+  csv.clear();
   csv.writeVector(header);
   csv.writeVector(v);
   csv.writeVector(v2);

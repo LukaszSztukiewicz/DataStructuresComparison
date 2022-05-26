@@ -25,7 +25,7 @@ public:
   void clear();
   void changeDelimiterTo(std::string delimiter) { this->delimiter = delimiter; }
   void writeVector(std::vector<std::string> v);
-  void writeLine(std::string line, std::string end = "\n", bool append = false);
+  void writeLine(std::string line, std::string end = "\n", bool append = true);
 
   std::vector<std::vector<std::string>> readAll(bool skipHeader = false);
   std::vector<std::string> readColumn(int column, bool skipHeader);

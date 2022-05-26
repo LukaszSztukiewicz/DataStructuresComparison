@@ -17,7 +17,7 @@ std::string randomString(int len) {
 
 CSV::CSV(std::string filename, bool isCreateNewFile) : filename(filename) {
   if (isCreateNewFile) {
-    std::fstream file(filename, std::fstream::trunc);
+    std::fstream file(filename, std::fstream::trunc | std::fstream::out);
     file.close();
   }
 };
@@ -41,7 +41,7 @@ void CSV::writeVector(std::vector<std::string> v) {
   std::string line = "";
   for (auto s : v)
     line += s + delimiter;
-  writeLine(line, "\n", true);
+  writeLine(line, "\n");
 }
 
 std::vector<std::string> CSV::readRow(int row) {
