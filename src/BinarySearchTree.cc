@@ -14,7 +14,7 @@ BinarySearchTree::~BinarySearchTree() {
   delete root;
 };
 
-void BinarySearchTree::remove(InsertData *data, bool compareIndexOnly = true) {
+void BinarySearchTree::remove(InsertData *data, bool compareIndexOnly) {
   BinarySearchTreeNode *current  = root;
   BinarySearchTreeNode *previous = nullptr;
   bool isEqual;
@@ -35,6 +35,7 @@ void BinarySearchTree::remove(InsertData *data, bool compareIndexOnly = true) {
             previous->right = current->left;
           }
         }
+
         delete current;
         return;
       }
@@ -44,7 +45,7 @@ void BinarySearchTree::remove(InsertData *data, bool compareIndexOnly = true) {
   }
 }
 
-InsertData *BinarySearchTree::search(InsertData *data, bool compareIndexOnly = true) {
+InsertData *BinarySearchTree::search(InsertData *data, bool compareIndexOnly) {
   BinarySearchTreeNode *current = root;
   while (current != nullptr) {
     if (compareIndexOnly) {
@@ -66,10 +67,10 @@ InsertData *BinarySearchTree::search(InsertData *data, bool compareIndexOnly = t
 }
 
 void BinarySearchTree::insert(InsertData *data, bool withDuplicates) {
-  BinarySearchTreeNode *newItem;
-  newItem->data  = data;
-  newItem->left  = nullptr;
-  newItem->right = nullptr;
+  BinarySearchTreeNode *newItem = new BinarySearchTreeNode(data);
+  newItem->data                 = data;
+  newItem->left                 = nullptr;
+  newItem->right                = nullptr;
   if (root == nullptr) {
     root = newItem;
   } else {
@@ -78,6 +79,7 @@ void BinarySearchTree::insert(InsertData *data, bool withDuplicates) {
       if (current->data->getIndex() > data->getIndex()) {
         if (current->left == nullptr) {
           current->left = newItem;
+
           return;
         } else {
           current = current->left;
@@ -94,12 +96,12 @@ void BinarySearchTree::insert(InsertData *data, bool withDuplicates) {
   }
 }
 
-void BinarySearchTree::recursivePrint(BinarySearchTreeNode *node, bool *indicesOnly, BinarySearchTree::traversalOrder *traversalOrder) {
+void BinarySearchTree::recursivePrint(BinarySearchTreeNode *node, bool *indicesOnly, BinarySearchTree::traversalOrder traversalOrder) {
   {
     if (node == nullptr) {
       return;
     }
-    switch (*traversalOrder) {
+    switch (traversalOrder) {
     case BinarySearchTree::traversalOrder::PRE_ORDER:
       if (*indicesOnly) {
         std::cout << node->data->getIndex() << " ";
@@ -131,11 +133,11 @@ void BinarySearchTree::recursivePrint(BinarySearchTreeNode *node, bool *indicesO
   }
 }
 
-void BinarySearchTree::recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder *traversalOrder) {
+void BinarySearchTree::recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder traversalOrder) {
   if (node == nullptr) {
     return;
   }
-  switch (*traversalOrder) {
+  switch (traversalOrder) {
   case BinarySearchTree::traversalOrder::PRE_ORDER:
     function(node->data);
     recursiveTraverseAndCallFunction(node->left, function, traversalOrder);
@@ -152,4 +154,8 @@ void BinarySearchTree::recursiveTraverseAndCallFunction(BinarySearchTreeNode *no
     function(node->data);
     break;
   }
+}
+
+void BinarySearchTree::print(bool indicesOnly) {
+  recursivePrint(root, &indicesOnly, BinarySearchTree::traversalOrder::IN_ORDER);
 }

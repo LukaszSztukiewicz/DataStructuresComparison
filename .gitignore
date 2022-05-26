@@ -7,10 +7,12 @@ bin/*
 #cmake
 *.a
 *.txt
+*.tcl
 *.cmake
 Makefile
 !CMakeLists.txt
 **/CMakeFiles/*
+Testing/*
 
 #graphs
 *.dot
