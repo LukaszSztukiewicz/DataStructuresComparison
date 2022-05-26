@@ -2,6 +2,8 @@
 
 InsertData::InsertData(int index) : index(index){};
 
+InsertData::~InsertData(){};
+
 void InsertData::print() {
   std::cout << index << '\n';
 }

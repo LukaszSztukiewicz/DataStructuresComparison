@@ -138,17 +138,17 @@ void BinarySearchTree::recursiveTraverseAndCallFunction(BinarySearchTreeNode *no
   switch (*traversalOrder) {
   case BinarySearchTree::traversalOrder::PRE_ORDER:
     function(node->data);
-    recursiveTraverseAndCallFunction(node->left, indicesOnly, traversalOrder, function);
-    recursiveTraverseAndCallFunction(node->right, indicesOnly, traversalOrder, function);
+    recursiveTraverseAndCallFunction(node->left, function, traversalOrder);
+    recursiveTraverseAndCallFunction(node->right, function, traversalOrder);
     break;
   case BinarySearchTree::traversalOrder::IN_ORDER:
-    recursiveTraverseAndCallFunction(node->left, indicesOnly, traversalOrder, function);
+    recursiveTraverseAndCallFunction(node->left, function, traversalOrder);
     function(node->data);
-    recursiveTraverseAndCallFunction(node->right, indicesOnly, traversalOrder, function);
+    recursiveTraverseAndCallFunction(node->right, function, traversalOrder);
     break;
   case BinarySearchTree::traversalOrder::POST_ORDER:
-    recursiveTraverseAndCallFunction(node->left, indicesOnly, traversalOrder, function);
-    recursiveTraverseAndCallFunction(node->right, indicesOnly, traversalOrder, function);
+    recursiveTraverseAndCallFunction(node->left, function, traversalOrder);
+    recursiveTraverseAndCallFunction(node->right, function, traversalOrder);
     function(node->data);
     break;
   }

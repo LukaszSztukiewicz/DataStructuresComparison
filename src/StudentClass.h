@@ -4,6 +4,7 @@
 #include "DataStructure.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 class Student : public InsertData {
 private:
@@ -21,5 +22,18 @@ public:
 
   bool operator==(const Student &other) const;
 };
+
+class StudnetsGenerator {
+private:
+  std::vector<Student *> students;
+
+public:
+  StudnetsGenerator();
+  ~StudnetsGenerator();
+  void generate(int n, int indexSize, int stringLen, bool newlist = false);
+  void saveToCSV(std::string filename);
+  void loadFromCSV(std::string filename);
+  void print(bool indicesOnly);
+}
 
 #endif // STUDENTCLASS_H
