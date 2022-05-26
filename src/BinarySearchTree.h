@@ -25,11 +25,12 @@ public:
   };
   BinarySearchTree();
   ~BinarySearchTree();
-  void insert(InsertData *data, bool withDuplicates);
-  void remove(InsertData *data, bool compareIndexOnly);
-  InsertData *search(InsertData *data, bool compareIndexOnly);
-  void recursivePrint(BinarySearchTreeNode *root, bool *indicesOnly, BinarySearchTree::traversalOrder *traversalOrder);
-  void recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder *traversalOrder);
+  void insert(InsertData *data, bool withDuplicates = true);
+  void remove(InsertData *data, bool compareIndexOnly = true);
+  InsertData *search(InsertData *data, bool compareIndexOnly = true);
+  void recursivePrint(BinarySearchTreeNode *root, bool *indicesOnly, BinarySearchTree::traversalOrder traversalOrder);
+  void recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder traversalOrder);
+  void print(bool indicesOnly);
 };
 
 #endif // BINARYSEARCHTREE_H

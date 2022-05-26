@@ -15,7 +15,6 @@ public:
 class DynamicOrderedListUnidirectional : public DataStructure {
 private:
   ListItemUnidirectional *head;
-  ;
 
 public:
   ~DynamicOrderedListUnidirectional();

@@ -3,11 +3,12 @@
 Code of experiments on data structures done in the CuPyterLab environment
 
 Test with Valgrind
-valgrind --leak-check=full ./bin/DataStructuresComparison_test
-valgrind --leak-check=full ./bin/DataStructuresComparison_run
-
-or use built-in ctest:
-ctest -T memcheck
+```
+    valgrind --leak-check=full ./bin/DataStructuresComparison_test
+```
+```
+    valgrind --leak-check=full ./bin/DataStructuresComparison_run
+```
 
 [Google Style Guide](https://google.github.io/styleguide/cppguide.html)
 

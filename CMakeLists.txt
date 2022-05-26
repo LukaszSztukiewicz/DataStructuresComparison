@@ -15,3 +15,6 @@ add_subdirectory(lib/googletest)
 add_subdirectory(src)
 add_subdirectory(test)
 
+include(CTest)
+enable_testing()
+
