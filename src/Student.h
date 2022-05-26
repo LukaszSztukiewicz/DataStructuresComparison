@@ -2,23 +2,24 @@
 #define STUDENTCLASS_H
 
 #include "DataStructure.h"
+#include "utils.h"
 #include <iostream>
 #include <string>
 #include <vector>
 
 class Student : public InsertData {
 private:
-  std::string firstname;
-  std::string lastname;
+  std::string firstName;
+  std::string lastName;
 
 public:
-  Student(int index, std::string firstname, std::string lastname);
+  Student(int index, std::string firstName, std::string lastName);
   ~Student();
   void print();
   std::string toString();
   std::string toCSV();
-  std::string getFirstname();
-  std::string getLastname();
+  std::string getFirstName();
+  std::string getLastName();
 
   bool operator==(const Student &other) const;
 };
@@ -31,9 +32,9 @@ public:
   StudnetsGenerator();
   ~StudnetsGenerator();
   void generate(int n, int indexSize, int stringLen, bool newlist = false);
-  void saveToCSV(std::string filename);
-  void loadFromCSV(std::string filename);
+  void saveToCSV(std::string fileName);
+  void loadFromCSV(std::string fileName);
   void print(bool indicesOnly);
-}
+};
 
 #endif // STUDENTCLASS_H

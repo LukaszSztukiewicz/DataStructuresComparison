@@ -17,6 +17,17 @@ double measureTimeOfFunction(std::function<T *(int *, int)> f, int arr[], int n)
   return time_taken_ch;
 }
 
+int randomInt(int min, int max) {
+  return rand() % (max - min) + min;
+}
+
+std::string randomString(int len) {
+  std::string str = "";
+  for (int i = 0; i < len; i++)
+    str += (char)(rand() % 26 + 97);
+  return str;
+}
+
 } // namespace utils
 
 CSV::CSV(std::string filename) {

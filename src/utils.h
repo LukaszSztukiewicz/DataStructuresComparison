@@ -2,6 +2,7 @@
 #define UTILS_H
 
 #include <chrono>
+#include <cmath>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -13,7 +14,8 @@ namespace utils {
 void printArray(int arr[], int n);
 template <typename T>
 double measureTimeOfFunction(std::function<T *(int *, int)> f, int arr[], int n);
-
+int randomInt(int min, int max);
+std::string randomString(int len);
 } // namespace utils
 
 class CSV {
@@ -61,6 +63,13 @@ public:
     file.clear();
     file.seekp(0, std::ios::end);
     file << t;
+  }
+
+  template <typename T>
+  void writeLine(T t) {
+    file.clear();
+    file.seekp(0, std::ios::end);
+    file << t << '\n';
   }
 
   std::vector<std::vector<std::string>> readAll(bool skipHeader = false) {
