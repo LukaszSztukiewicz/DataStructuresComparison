@@ -15,11 +15,24 @@ std::string randomString(int len) {
 
 } // namespace utils
 
-CSV::CSV(std::string filename) : filename(filename){};
+CSV::CSV(std::string filename, bool isCreateNewFile) : filename(filename) {
+  if (isCreateNewFile) {
+    std::fstream file(filename, std::fstream::trunc);
+    file.close();
+  }
+};
 
-void CSV::writeLine(std::string line, std::string end) {
-  std::ofstream file;
-  file.open(filename, std::ios_base::app);
+void CSV::clear() {
+  std::fstream file(filename, std::fstream::trunc);
+  file.close();
+}
+
+void CSV::writeLine(std::string line, std::string end, bool append) {
+  std::fstream file;
+  if (append)
+    file.open(filename, std::ios::app);
+  else
+    file.open(filename, std::ios::out);
   file << line << end;
   file.close();
 }
@@ -28,12 +41,12 @@ void CSV::writeVector(std::vector<std::string> v) {
   std::string line = "";
   for (auto s : v)
     line += s + delimiter;
-  writeLine(line, "\n");
+  writeLine(line, "\n", true);
 }
 
 std::vector<std::string> CSV::readRow(int row) {
   std::fstream file;
-  file.open(filename, std::fstream::out);
+  file.open(filename, std::fstream::in);
   std::vector<std::string> result;
   std::string line;
   for (int i = 0; i <= row; i++) {
@@ -48,7 +61,7 @@ std::vector<std::string> CSV::readRow(int row) {
 }
 std::vector<std::string> CSV::readColumn(int column, bool skipHeader) {
   std::fstream file;
-  file.open(filename, std::fstream::out);
+  file.open(filename, std::fstream::in);
   std::vector<std::string> result;
   std::string line;
   if (skipHeader) {
@@ -67,22 +80,20 @@ std::vector<std::string> CSV::readColumn(int column, bool skipHeader) {
 
 std::vector<std::vector<std::string>> CSV::readAll(bool skipHeader) {
   std::fstream file;
-  file.open(filename, std::fstream::out);
+  file.open(filename, std::fstream::in);
   std::vector<std::vector<std::string>> result;
-  std::string line = "";
+  std::string line;
   if (skipHeader) {
-    std::getline(file, line);
+    std::getline(file, line, '\n');
   }
-  int i = 3;
-  while (!file.eof()) {
-    file >> line;
-    std::vector<std::string> lineSplit;
+  while (std::getline(file, line, '\n')) {
     std::stringstream ss(line);
     std::string item;
+    std::vector<std::string> row;
     while (std::getline(ss, item, delimiter[0])) {
-      lineSplit.push_back(item);
+      row.push_back(item);
     }
-    result.push_back(lineSplit);
+    result.push_back(row);
   }
   file.close();
   return result;
