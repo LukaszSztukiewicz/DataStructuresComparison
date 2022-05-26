@@ -1,22 +1,16 @@
-# CuPyterLab
-Environment for performing experminents in C++ and data analisys in Python with extensive support for Jupyter Notebooks.
+# DataStructuresComparison
+
+Code of experiments on data structures done in the CuPyterLab environment
+
+Test with Valgrind
+valgrind --leak-check=full ./bin/DataStructuresComparison_test
+valgrind --leak-check=full ./bin/DataStructuresComparison_run
+
+or use built-in ctest:
+ctest -T memcheck
 
 [Google Style Guide](https://google.github.io/styleguide/cppguide.html)
 
-Target: 
- - [x] Linux
- - [x] WSL2
-
-### Setup: 
-#### Linux
-```
-    git clone https://github.com/LukaszSztukiewicz/CuPyterLab.git
-    cd CuPyterLab
-
-    chmod +x ./scripts/bash/env-setup.sh 
-    ./scripts/bash/env-setup.sh "YOUR_PROJECT_NAME_IN_QUOTATION_MARKS"
-    ptest
-```
 ### Usage
 Build: 
 ```
@@ -34,12 +28,11 @@ Debug:
 ```
     cmake . -DCMAKE_BUILD_TYPE=Debug
 ```
+easiest with 
 ### Dependencies:
  - [x] google test
  - [x] cmake
- - [ ] btaf
- - [ ] graphviz, anim
- - [ ] gdb
+ - [x] Valgrind
 
 File extensions:
  - .cc for C++ (Linux style)

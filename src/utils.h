@@ -17,13 +17,13 @@ double measureTimeOfFunction(std::function<T *(int *, int)> f, int arr[], int n)
 class CSV {
 private:
   std::string filename;
-  std::ofstream file;
+  std::fstream file;
   std::string delimiter = ",";
 
 public:
   CSV(std::string filename) {
     this->filename = filename;
-    this->file.open(filename, std::ofstream::out | std::ofstream::in);
+    this->file.open(filename, std::ofstream::out | std::ofstream::in | std::ofstream::trunc);
   }
 
   ~CSV() { this->file.close(); }

@@ -1,0 +1,4 @@
+#ifndef STUDENTCLASS_H
+#define STUDENTCLASS_H
+
+#endif // STUDENTCLASS_H 
