@@ -24,12 +24,12 @@ public:
   bool operator==(const Student &other) const;
 };
 
-class StudnetsGenerator {
+class StudentsGenerator {
 
 public:
   std::vector<Student *> students;
-  StudnetsGenerator();
-  ~StudnetsGenerator();
+  StudentsGenerator();
+  ~StudentsGenerator();
   void generate(int n, int indexSize, int stringLen, bool newlist = false);
   void saveToCSV(std::string fileName);
   void loadFromCSV(std::string fileName);

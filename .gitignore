@@ -23,6 +23,7 @@ Testing/*
 #temp
 *.tmp
 *.csv
+*.pdf
 
 !.gitkeep
 !.vscode/*

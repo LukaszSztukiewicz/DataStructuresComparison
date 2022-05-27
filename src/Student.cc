@@ -30,15 +30,15 @@ bool Student::operator==(const Student &other) const {
   return index == other.index && firstName == other.firstName && lastName == other.lastName;
 }
 
-StudnetsGenerator::StudnetsGenerator() {
+StudentsGenerator::StudentsGenerator() {
 }
 
-StudnetsGenerator::~StudnetsGenerator() {
+StudentsGenerator::~StudentsGenerator() {
   for (auto student : students)
     delete student;
 }
 
-void StudnetsGenerator::generate(int n, int indexSize, int stringLen, bool newlist) {
+void StudentsGenerator::generate(int n, int indexSize, int stringLen, bool newlist) {
   if (newlist) {
     for (auto student : students)
       delete student;
@@ -49,7 +49,7 @@ void StudnetsGenerator::generate(int n, int indexSize, int stringLen, bool newli
   }
 }
 
-void StudnetsGenerator::saveToCSV(std::string fileName) {
+void StudentsGenerator::saveToCSV(std::string fileName) {
   CSV csv(fileName);
   for (int i = 0; i < students.size() - 1; i++) {
     csv.writeLine(students[i]->toCSV());
@@ -57,7 +57,7 @@ void StudnetsGenerator::saveToCSV(std::string fileName) {
   csv.writeLine(students[students.size() - 1]->toCSV());
 }
 
-void StudnetsGenerator::loadFromCSV(std::string fileName) {
+void StudentsGenerator::loadFromCSV(std::string fileName) {
   CSV csv(fileName, false);
   std::vector<std::vector<std::string>> lines = {};
 
@@ -67,7 +67,7 @@ void StudnetsGenerator::loadFromCSV(std::string fileName) {
   }
 }
 
-void StudnetsGenerator::print(bool indicesOnly, int limit) {
+void StudentsGenerator::print(bool indicesOnly, int limit) {
   for (int i = 0; i < students.size(); i++) {
     if (indicesOnly)
       std::cout << students[i]->getIndex() << '\n';

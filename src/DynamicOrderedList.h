@@ -19,10 +19,10 @@ private:
 public:
   DynamicOrderedListUnidirectional();
   ~DynamicOrderedListUnidirectional();
-  void insert(InsertData *data, bool withDuplicates = true);
-  void remove(InsertData *data, bool byIndexOnly = true);
-  InsertData *search(InsertData *data, bool byIndexOnly = true);
-  void print(bool indicesOnly);
+  void insert(InsertData *data);
+  void remove(InsertData *data);
+  InsertData *search(InsertData *data);
+  void print(bool indicesOnly) override;
 };
 
 #endif // DYNAMICORDEREDLIST_H
