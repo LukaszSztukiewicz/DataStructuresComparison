@@ -8,7 +8,9 @@ BinarySearchTreeNode::~BinarySearchTreeNode() {
   delete right;
 };
 
-BinarySearchTree::BinarySearchTree() : root(nullptr){};
+BinarySearchTree::BinarySearchTree() : root(nullptr) {
+  selfName = "BinarySearchTree";
+};
 
 BinarySearchTree::~BinarySearchTree() {
   delete root;

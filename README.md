@@ -13,23 +13,27 @@ Test with Valgrind
 [Google Style Guide](https://google.github.io/styleguide/cppguide.html)
 
 ### Usage
+First build:
+```
+    cmake . 
+```
 Build: 
 ```
     make
 ```
 Run: 
 ```
-    prun
+    ./bin/DataStructuresComparison_run
 ```
 Test: 
 ```
-    ptest
+    ./bin/DataStructuresComparison_test
 ```
 Debug:
 ```
     cmake . -DCMAKE_BUILD_TYPE=Debug
 ```
-easiest with 
+
 ### Dependencies:
  - [x] google test
  - [x] cmake

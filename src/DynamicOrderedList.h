@@ -17,6 +17,7 @@ private:
   ListItemUnidirectional *head;
 
 public:
+  DynamicOrderedListUnidirectional();
   ~DynamicOrderedListUnidirectional();
   void insert(InsertData *data, bool withDuplicates = true);
   void remove(InsertData *data, bool byIndexOnly = true);

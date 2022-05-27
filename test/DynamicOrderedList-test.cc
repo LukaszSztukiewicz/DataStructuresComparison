@@ -13,6 +13,7 @@ TEST(DynamicOrderedListUnidirectional, remove_inorder) {
     list->remove(new InsertData(i));
   }
   EXPECT_EQ(nullptr, list->search(new InsertData(0)));
+  delete list;
 }
 
 TEST(DynamicOrderedListUnidirectional, remove_inreverse) {
@@ -27,6 +28,7 @@ TEST(DynamicOrderedListUnidirectional, remove_inreverse) {
     list->remove(new InsertData(i));
   }
   EXPECT_EQ(nullptr, list->search(new InsertData(0)));
+  delete list;
 }
 
 TEST(DynamicOrderedListUnidirectional, remove_inrandom) {
@@ -46,4 +48,5 @@ TEST(DynamicOrderedListUnidirectional, remove_inrandom) {
     list->remove(new InsertData(indexes[i]));
   }
   EXPECT_EQ(nullptr, list->search(new InsertData(0)));
+  delete list;
 }

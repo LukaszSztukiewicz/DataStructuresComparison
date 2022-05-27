@@ -2,7 +2,9 @@
 
 Student::Student(int index, std::string firstName, std::string lastName) : InsertData(index), firstName(firstName), lastName(lastName){};
 
-Student::~Student(){};
+Student::~Student(){
+
+};
 
 void Student::print() {
   std::cout << std::to_string(index) << " " << firstName << " " << lastName << '\n';

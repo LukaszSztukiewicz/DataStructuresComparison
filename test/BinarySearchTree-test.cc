@@ -14,6 +14,7 @@ TEST(BinarySearchTree, remove_inorder) {
     tree->remove(new InsertData(i));
   }
   EXPECT_EQ(nullptr, tree->search(new InsertData(0)));
+  delete tree;
 }
 
 // create tests for BinarySearchTree class remove inreverse
@@ -29,6 +30,7 @@ TEST(BinarySearchTree, remove_inreverse) {
     tree->remove(new InsertData(i));
   }
   EXPECT_EQ(nullptr, tree->search(new InsertData(0)));
+  delete tree;
 }
 
 // create tests for BinarySearchTree class remove inrandom
@@ -49,4 +51,5 @@ TEST(BinarySearchTree, remove_inrandom) {
     tree->remove(new InsertData(indexes[i]));
   }
   EXPECT_EQ(nullptr, tree->search(new InsertData(0)));
+  delete tree;
 }

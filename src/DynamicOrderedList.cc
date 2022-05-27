@@ -7,6 +7,10 @@ ListItemUnidirectional::~ListItemUnidirectional() {
   delete next;
 };
 
+DynamicOrderedListUnidirectional::DynamicOrderedListUnidirectional() : head(nullptr) {
+  selfName = "DynamicOrderedListUnidirectional";
+};
+
 DynamicOrderedListUnidirectional::~DynamicOrderedListUnidirectional() {
   ListItemUnidirectional *current = head;
   while (current != nullptr) {
