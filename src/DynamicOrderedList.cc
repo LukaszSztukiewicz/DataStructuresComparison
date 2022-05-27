@@ -22,15 +22,15 @@ DynamicOrderedListUnidirectional::~DynamicOrderedListUnidirectional() {
 
 void DynamicOrderedListUnidirectional::insert(InsertData *data) {
   ListItemUnidirectional *newItem = new ListItemUnidirectional(data);
-  newItem->next                   = nullptr;
   if (head == nullptr) {
     head = newItem;
     return;
   }
   ListItemUnidirectional *current = head;
-  while (current->next != nullptr) {
+  while (current->next != nullptr && current->next->data->getIndex() < data->getIndex()) {
     current = current->next;
   }
+  newItem->next = current->next;
   current->next = newItem;
 }
 

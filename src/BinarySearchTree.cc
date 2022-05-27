@@ -60,28 +60,25 @@ InsertData *BinarySearchTree::search(InsertData *data) {
 
 void BinarySearchTree::insert(InsertData *data) {
   BinarySearchTreeNode *newItem = new BinarySearchTreeNode(data);
-  newItem->data                 = data;
-  newItem->left                 = nullptr;
-  newItem->right                = nullptr;
   if (root == nullptr) {
     root = newItem;
-  } else {
-    BinarySearchTreeNode *current = root;
-    while (current != nullptr) {
-      if (current->data->getIndex() > data->getIndex()) {
-        if (current->left == nullptr) {
-          current->left = newItem;
-          return;
-        } else {
-          current = current->left;
-        }
+    return;
+  }
+  BinarySearchTreeNode *current = root;
+  while (current != nullptr) {
+    if (current->data->getIndex() > data->getIndex()) {
+      if (current->left == nullptr) {
+        current->left = newItem;
+        return;
       } else {
-        if (current->right == nullptr) {
-          current->right = newItem;
-          return;
-        } else {
-          current = current->right;
-        }
+        current = current->left;
+      }
+    } else {
+      if (current->right == nullptr) {
+        current->right = newItem;
+        return;
+      } else {
+        current = current->right;
       }
     }
   }

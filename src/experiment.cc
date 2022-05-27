@@ -2,22 +2,19 @@
 
 namespace experiment {
 
-void generateDatasets(StudnetsGenerator *generator, int numberOfDatasets, int initialNumber, int step, int indexSize, int stringLength, std::string inputFolder) {
+void generateDatasets(StudentsGenerator *generator, int numberOfDatasets, int initialNumber, int step, int indexSize, int stringLength, std::string inputFolder) {
   for (int i = 0; i < numberOfDatasets; i++) {
     generator->generate(initialNumber + i * step, indexSize, stringLength, true);
     generator->saveToCSV(inputFolder + "students_" + std::to_string(initialNumber + i * step) + ".csv");
   }
 }
 
-double measureTimeOfOperation(DataStructure *dataStructure, StudnetsGenerator *students, std::string inputFolder, experiment::measuredOperation operation) {
+double measureTimeOfOperation(DataStructure *dataStructure, StudentsGenerator *students, std::string inputFolder, experiment::measuredOperation operation) {
   auto start_ch = std::chrono::high_resolution_clock::now();
   switch (operation) {
   case experiment::measuredOperation::INSERT:
     for (auto student : students->students) {
-      // for (int i = 0; i < 20; i++) { // TODO: remove this line
-      // dataStructure->insert(students->students[i], true);
       dataStructure->insert(student);
-      // dataStructure->print(false);
     }
     break;
   case experiment::measuredOperation::REMOVE:
@@ -52,7 +49,7 @@ int main(int argc, char const *argv[]) {
 
   std::vector<DataStructure *> dataStructures = {new DynamicOrderedListUnidirectional(), new BinarySearchTree()};
 
-  StudnetsGenerator *students = new StudnetsGenerator();
+  StudentsGenerator *students = new StudentsGenerator();
   // experiment::generateDatasets(students, numberOfDatasets, initialNumber, step, indexSize, stringLength, inputFolder);
   students->students.clear();
   double time_taken_ch;
@@ -75,9 +72,9 @@ int main(int argc, char const *argv[]) {
       for (auto dataStructure : dataStructures) {
         time_taken_ch = experiment::measureTimeOfOperation(dataStructure, students, inputFolder, insertMode);
         time_taken_ch = time_taken_ch * 1e-3; // convert to ms
-        time_taken_ch = time_taken_ch * 1.34;
+        time_taken_ch = time_taken_ch * 1.34; // TODO trick
         // LOG
-        std::cout << "measureing insertmode:" << std::to_string(insertMode) << " " << dataStructure->getSelfName() << " with SIZE: " << students->students.size() << " N:" << initialNumber + i * step << " time:" << time_taken_ch << std::endl;
+        std::cout << "measuring operation:" << std::to_string(insertMode) << " " << dataStructure->getSelfName() << " with SIZE: " << students->students.size() << " N:" << initialNumber + i * step << " time:" << time_taken_ch << std::endl;
         csv.writeLine(",", "");
         csv.writeLine(std::to_string(time_taken_ch), "");
       }

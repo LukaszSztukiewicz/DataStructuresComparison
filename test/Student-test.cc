@@ -12,9 +12,9 @@ TEST(Student, Constructor) {
   delete s1;
 }
 
-// create tests for StudnetsGenerator generate function
-TEST(StudnetsGenerator, Generate) {
-  StudnetsGenerator *sg = new StudnetsGenerator();
+// create tests for StudentsGenerator generate function
+TEST(StudentsGenerator, Generate) {
+  StudentsGenerator *sg = new StudentsGenerator();
   sg->generate(10, 4, 10);
   EXPECT_EQ(10, sg->students.size());
   EXPECT_EQ(10, sg->students[0]->getLastName().length());
@@ -23,12 +23,12 @@ TEST(StudnetsGenerator, Generate) {
   delete sg;
 };
 
-// create tests for StudnetsGenerator saveToCSV function
-TEST(StudnetsGenerator, SaveToCSV) {
-  StudnetsGenerator *sg = new StudnetsGenerator();
+// create tests for StudentsGenerator saveToCSV function
+TEST(StudentsGenerator, SaveToCSV) {
+  StudentsGenerator *sg = new StudentsGenerator();
   sg->generate(10, 4, 10);
   sg->saveToCSV("test.csv");
-  StudnetsGenerator *sg2 = new StudnetsGenerator();
+  StudentsGenerator *sg2 = new StudentsGenerator();
   sg2->loadFromCSV("test.csv");
   EXPECT_EQ(10, sg2->students.size());
   EXPECT_EQ(10, sg2->students[0]->getLastName().length());
