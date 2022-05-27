@@ -71,8 +71,8 @@ int main(int argc, char const *argv[]) {
       students->loadFromCSV(inputFolder + "students_" + std::to_string(initialNumber + i * step) + ".csv");
       for (auto dataStructure : dataStructures) {
         time_taken_ch = experiment::measureTimeOfOperation(dataStructure, students, inputFolder, insertMode);
-        time_taken_ch = time_taken_ch * 1e-3; // convert to ms
-        time_taken_ch = time_taken_ch * 1.34; // TODO trick
+        time_taken_ch = time_taken_ch * (double)1e-3; // convert to ms
+        time_taken_ch = time_taken_ch * 1.34;         // TODO trick
         // LOG
         std::cout << "measuring operation:" << std::to_string(insertMode) << " " << dataStructure->getSelfName() << " with SIZE: " << students->students.size() << " N:" << initialNumber + i * step << " time:" << time_taken_ch << std::endl;
         csv.writeLine(",", "");
