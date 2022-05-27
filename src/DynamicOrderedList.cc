@@ -20,7 +20,7 @@ DynamicOrderedListUnidirectional::~DynamicOrderedListUnidirectional() {
   }
 }
 
-void DynamicOrderedListUnidirectional::insert(InsertData *data, bool withDuplicates) {
+void DynamicOrderedListUnidirectional::insert(InsertData *data) {
   ListItemUnidirectional *newItem = new ListItemUnidirectional(data);
   newItem->next                   = nullptr;
   if (head == nullptr) {
@@ -30,23 +30,16 @@ void DynamicOrderedListUnidirectional::insert(InsertData *data, bool withDuplica
   ListItemUnidirectional *current = head;
   while (current->next != nullptr) {
     current = current->next;
-    if (!withDuplicates && current->data->getIndex() == data->getIndex()) {
-      return;
-    }
   }
   current->next = newItem;
 }
 
-void DynamicOrderedListUnidirectional::remove(InsertData *data, bool byIndexOnly) {
+void DynamicOrderedListUnidirectional::remove(InsertData *data) {
   ListItemUnidirectional *current  = head;
   ListItemUnidirectional *previous = nullptr;
   bool isEqual;
   while (current != nullptr) {
-    if (byIndexOnly) {
-      isEqual = current->data->getIndex() == data->getIndex();
-    } else {
-      isEqual = *current->data == *data;
-    }
+    isEqual = current->data->getIndex() == data->getIndex();
     if (isEqual) {
       if (previous == nullptr) {
         head = current->next;
@@ -63,17 +56,11 @@ void DynamicOrderedListUnidirectional::remove(InsertData *data, bool byIndexOnly
   }
 }
 
-InsertData *DynamicOrderedListUnidirectional::search(InsertData *data, bool byIndexOnly) {
+InsertData *DynamicOrderedListUnidirectional::search(InsertData *data) {
   ListItemUnidirectional *current = head;
   while (current != nullptr) {
-    if (byIndexOnly) {
-      if (current->data->getIndex() == data->getIndex()) {
-        return current->data;
-      }
-    } else {
-      if (*current->data == *data) {
-        return current->data;
-      }
+    if (current->data->getIndex() == data->getIndex()) {
+      return current->data;
     }
     current = current->next;
   }

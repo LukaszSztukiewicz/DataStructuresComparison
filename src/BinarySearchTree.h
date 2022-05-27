@@ -25,9 +25,9 @@ public:
   };
   BinarySearchTree();
   ~BinarySearchTree();
-  void insert(InsertData *data, bool withDuplicates = true);
-  void remove(InsertData *data, bool compareIndexOnly = true);
-  InsertData *search(InsertData *data, bool compareIndexOnly = true);
+  void insert(InsertData *data);
+  void remove(InsertData *data);
+  InsertData *search(InsertData *data);
   void recursivePrint(BinarySearchTreeNode *root, bool *indicesOnly, BinarySearchTree::traversalOrder traversalOrder);
   void recursiveTraverseAndCallFunction(BinarySearchTreeNode *node, std::function<void *(InsertData *)> function, BinarySearchTree::traversalOrder traversalOrder);
   void print(bool indicesOnly);
