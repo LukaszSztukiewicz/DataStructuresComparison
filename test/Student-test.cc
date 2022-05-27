@@ -20,6 +20,7 @@ TEST(StudnetsGenerator, Generate) {
   EXPECT_EQ(10, sg->students[0]->getLastName().length());
   EXPECT_EQ(10, sg->students[0]->getFirstName().length());
   EXPECT_GE(1, sg->students[0]->getIndex() / std::pow(10, 5));
+  delete sg;
 };
 
 // create tests for StudnetsGenerator saveToCSV function
@@ -40,4 +41,7 @@ TEST(StudnetsGenerator, SaveToCSV) {
   EXPECT_EQ(sg->students[randomIndex]->getIndex(), sg2->students[randomIndex]->getIndex());
   EXPECT_EQ(sg->students[randomIndex]->getFirstName(), sg2->students[randomIndex]->getFirstName());
   EXPECT_EQ(sg->students[randomIndex]->getLastName(), sg2->students[randomIndex]->getLastName());
+  remove("test.csv");
+  delete sg;
+  delete sg2;
 }
