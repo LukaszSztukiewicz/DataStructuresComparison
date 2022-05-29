@@ -2,6 +2,8 @@
 
 BalancedBinarySearchTreeNode::BalancedBinarySearchTreeNode(InsertData *data) : data(data), key(data->getIndex()), height(1), left(nullptr), right(nullptr){};
 
+namespace BBST {
+
 int max(int a, int b) {
   return (a > b) ? a : b;
 }
@@ -172,3 +174,4 @@ void printTree(BalancedBinarySearchTreeNode *root, std::string indent, bool last
     printTree(root->right, indent, true);
   }
 }
+} // namespace BBST
