@@ -2,16 +2,17 @@
 #define BALANCEDBINARYSEARCHTREE_H
 
 #include "BinarySearchTree.h"
+#include "DataStructure.h"
 
-class BalancedBinarySearchTree : public BinarySearchTree {
-private:
-  void balance();
-
+class BalancedBinarySearchTreeNode : public DataStructure {
 public:
-  BalancedBinarySearchTree();
-  ~BalancedBinarySearchTree();
-  void insert(InsertData *data, bool withDuplicates);
-  void remove(InsertData *data, bool byIndexOnly);
+  InsertData *data;
+  int key;
+  int height;
+  BalancedBinarySearchTreeNode *left;
+  BalancedBinarySearchTreeNode *right;
+  BalancedBinarySearchTreeNode(InsertData *data);
+  ~BalancedBinarySearchTreeNode();
 };
 
 #endif // BALANCEDBINARYSEARCHTREE_H
